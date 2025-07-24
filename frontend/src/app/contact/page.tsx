@@ -1,3 +1,5 @@
+"use client";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -6,11 +8,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowLeft, Mail, MessageCircle, Clock } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
-const Contact = () => {
+export default function Contact() {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
@@ -43,7 +45,7 @@ const Contact = () => {
         <div className="container">
           <div className="mb-8">
             <Button variant="ghost" asChild className="mb-6">
-              <Link to="/">
+              <Link href="/">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Home
               </Link>
@@ -186,6 +188,4 @@ const Contact = () => {
       <Footer />
     </div>
   );
-};
-
-export default Contact;
+}

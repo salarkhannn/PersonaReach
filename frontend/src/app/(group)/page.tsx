@@ -5,7 +5,7 @@ import Pricing from "@/components/Pricing";
 import Testimonials from "@/components/Testimonials";
 import Footer from "@/components/Footer";
 
-const Home = () => {
+export default function Home() {
   return (
     <div className="min-h-screen">
       <Header />
@@ -16,6 +16,4 @@ const Home = () => {
       <Footer />
     </div>
   );
-};
-
-export default Home;
+}

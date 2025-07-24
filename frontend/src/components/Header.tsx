@@ -1,18 +1,21 @@
+'use client';
+
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => pathname === path;
 
   return (
     <header className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b border-border">
       <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-2">
           <div className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent font-bold text-2xl">
             PersonaReach.ai
           </div>
@@ -21,7 +24,7 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           <Link
-            to="/"
+            href="/"
             className={`text-sm font-medium transition-colors hover:text-primary ${
               isActive("/") ? "text-primary" : "text-muted-foreground"
             }`}
@@ -29,7 +32,7 @@ const Header = () => {
             Home
           </Link>
           <Link
-            to="/pricing"
+            href="/pricing"
             className={`text-sm font-medium transition-colors hover:text-primary ${
               isActive("/pricing") ? "text-primary" : "text-muted-foreground"
             }`}
@@ -37,7 +40,7 @@ const Header = () => {
             Pricing
           </Link>
           <Link
-            to="/contact"
+            href="/contact"
             className={`text-sm font-medium transition-colors hover:text-primary ${
               isActive("/contact") ? "text-primary" : "text-muted-foreground"
             }`}
@@ -48,10 +51,10 @@ const Header = () => {
 
         <div className="hidden md:flex items-center space-x-4">
           <Button variant="outline" asChild>
-            <Link to="#login">Login</Link>
+            <Link href="#login">Login</Link>
           </Button>
           <Button asChild>
-            <Link to="#signup">Get Started</Link>
+            <Link href="#signup">Get Started</Link>
           </Button>
         </div>
 
@@ -69,21 +72,21 @@ const Header = () => {
         <div className="md:hidden border-t border-border bg-background">
           <div className="container py-4 space-y-4">
             <Link
-              to="/"
+              href="/"
               className="block text-sm font-medium text-muted-foreground hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </Link>
             <Link
-              to="/pricing"
+              href="/pricing"
               className="block text-sm font-medium text-muted-foreground hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
               Pricing
             </Link>
             <Link
-              to="/contact"
+              href="/contact"
               className="block text-sm font-medium text-muted-foreground hover:text-primary"
               onClick={() => setIsMenuOpen(false)}
             >
@@ -91,10 +94,10 @@ const Header = () => {
             </Link>
             <div className="pt-4 space-y-2">
               <Button variant="outline" className="w-full" asChild>
-                <Link to="#login">Login</Link>
+                <Link href="#login">Login</Link>
               </Button>
               <Button className="w-full" asChild>
-                <Link to="#signup">Get Started</Link>
+                <Link href="#signup">Get Started</Link>
               </Button>
             </div>
           </div>

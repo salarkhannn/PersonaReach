@@ -1,11 +1,13 @@
+"use client";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Star, ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
-const PricingPage = () => {
+export default function PricingPage() {
   const plans = [
     {
       name: "Free",
@@ -65,7 +67,7 @@ const PricingPage = () => {
         <div className="container">
           <div className="mb-8">
             <Button variant="ghost" asChild className="mb-6">
-              <Link to="/">
+              <Link href="/">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Home
               </Link>
@@ -157,6 +159,4 @@ const PricingPage = () => {
       <Footer />
     </div>
   );
-};
-
-export default PricingPage;
+}

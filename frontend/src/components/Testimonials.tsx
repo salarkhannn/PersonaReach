@@ -56,7 +56,7 @@ const Testimonials = () => {
                 
                 <div className="flex items-center gap-3">
                   <Avatar>
-                    <AvatarImage src={`/api/placeholder/${testimonial.avatar}`} />
+                    <AvatarImage src="/placeholder.svg" />
                     <AvatarFallback className="bg-primary/10 text-primary font-medium">
                       {testimonial.avatar}
                     </AvatarFallback>
