@@ -26,11 +26,11 @@ const Hero = () => {
                 <span className="relative">
                   Cold Emails
                   {/* Decorative rotating element */}
-                  <div className="absolute h-12 w-12 rotate-12 rounded-2xl bg-gradient-to-br from-yellow-100 to-purple-100 shadow-md md:-right-16 md:top-2 md:h-16 md:w-16">
+                  {/* <div className="absolute h-12 w-12 rotate-12 rounded-2xl bg-gradient-to-br from-yellow-100 to-purple-100 shadow-md md:-right-16 md:top-2 md:h-16 md:w-16">
                     <div className="flex h-full w-full items-center justify-center">
                       <Mail className="h-6 w-6 text-gray-700 md:h-8 md:w-8" />
                     </div>
-                  </div>
+                  </div> */}
                 </span>
                 {" "}in Seconds
               </h1>
