@@ -9,12 +9,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { Copy, RefreshCw, Send, Sparkles } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { sendEmailParams } from "@/utils/api";
 
 interface EmailFormData {
   linkedinUrl: string;
   purpose: string;
   senderName: string;
-  companyName: string;
+  receiverName: string;
   tone: string;
   context: string;
 }
@@ -25,7 +26,7 @@ const EmailGenerator = () => {
     linkedinUrl: "",
     purpose: "",
     senderName: "",
-    companyName: "",
+    receiverName: "",
     tone: "",
     context: "",
   });
@@ -36,7 +37,8 @@ const EmailGenerator = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleGenerate = async () => {
+  const handleGenerate = async (e: React.FormEvent) => {
+    e.preventDefault();
     if (!formData.linkedinUrl || !formData.purpose || !formData.senderName || !formData.tone) {
       toast({
         title: "Missing Information",
@@ -47,53 +49,14 @@ const EmailGenerator = () => {
     }
 
     setIsGenerating(true);
-    
+
     try {
-      // Dummy API call - replace with actual backend integration
-      const response = await fetch('/api/generate-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to generate email');
-      }
-
-      // For now, simulate with placeholder content
-      setTimeout(() => {
-        const mockEmail = `Subject: Quick connection regarding ${formData.purpose}
-
-Hi [Name],
-
-I came across your LinkedIn profile and was impressed by your background in [Industry/Role]. I noticed you've been working on [Recent Achievement/Project] at [Company].
-
-I'm ${formData.senderName}${formData.companyName ? ` from ${formData.companyName}` : ''}, and I believe there might be a great opportunity for us to connect regarding ${formData.purpose.toLowerCase()}.
-
-${formData.context ? `\n${formData.context}\n` : ''}
-
-Would you be open to a brief 15-minute conversation this week to explore this further?
-
-Best regards,
-${formData.senderName}`;
-
-        setGeneratedEmail(mockEmail);
-        setIsGenerating(false);
-        
-        toast({
-          title: "Email Generated!",
-          description: "Your personalized email is ready.",
-        });
-      }, 2000);
+      const result = await sendEmailParams(formData.linkedinUrl, formData.purpose, formData.senderName, formData.receiverName, formData.tone, formData.context);
+      alert(result.message);
     } catch (error) {
+      alert("Error generating email. Please try again.");
+    } finally {
       setIsGenerating(false);
-      toast({
-        title: "Generation Failed",
-        description: "Something went wrong. Please try again.",
-        variant: "destructive",
-      });
     }
   };
 
@@ -105,8 +68,9 @@ ${formData.senderName}`;
     });
   };
 
-  const handleRegenerate = () => {
-    handleGenerate();
+  const handleRegenerate = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleGenerate(e);
   };
 
   return (
@@ -172,8 +136,8 @@ ${formData.senderName}`;
                     <Input
                       id="company-name"
                       placeholder="Acme Corp"
-                      value={formData.companyName}
-                      onChange={(e) => handleInputChange("companyName", e.target.value)}
+                      value={formData.receiverName}
+                      onChange={(e) => handleInputChange("receiverName", e.target.value)}
                     />
                   </div>
                 </div>
