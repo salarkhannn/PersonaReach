@@ -110,27 +110,31 @@ ${formData.senderName}`;
   };
 
   return (
-    <section id="email-generator" className="py-20 bg-muted/50">
-      <div className="container">
-        <div className="mx-auto max-w-4xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Generate Your Cold Email</h2>
-            <p className="text-muted-foreground text-lg">
-              Fill in the details below and let our AI create a personalized email for you
-            </p>
-          </div>
+    <section id="email-generator" className="relative min-h-screen overflow-hidden py-20" style={{ backgroundColor: '#FAF9F7' }}>
+      {/* Main Content Container */}
+      <div className="relative mx-auto max-w-7xl rounded-t-[32px] border border-dashed border-black/16" style={{ backgroundColor: '#FFFDFA' }}>
+        <div className="px-6 py-20">
+          <div className="mx-auto max-w-4xl">
+            <div className="text-center mb-12">
+              <h2 className="font-serif text-3xl font-normal mb-4" style={{ color: '#030303', letterSpacing: '-1px' }}>
+                Generate Your Cold Email
+              </h2>
+              <p className="text-lg" style={{ color: '#6C6E74' }}>
+                Fill in the details below and let our AI create a personalized email for you
+              </p>
+            </div>
 
-          <div className="grid gap-8 lg:grid-cols-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Sparkles className="h-5 w-5 text-primary" />
-                  Email Configuration
-                </CardTitle>
-                <CardDescription>
-                  Provide the details for your personalized cold email
-                </CardDescription>
-              </CardHeader>
+            <div className="grid gap-8 lg:grid-cols-2">
+              <Card className="border-gray-300 shadow-lg" style={{ backgroundColor: '#FFFFFF', borderRadius: '16px' }}>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 font-serif" style={{ color: '#030303' }}>
+                    <Sparkles className="h-5 w-5" style={{ color: '#6C6E74' }} />
+                    Email Configuration
+                  </CardTitle>
+                  <CardDescription style={{ color: '#6C6E74' }}>
+                    Provide the details for your personalized cold email
+                  </CardDescription>
+                </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="linkedin-url">LinkedIn Profile URL *</Label>
@@ -200,11 +204,14 @@ ${formData.senderName}`;
                   />
                 </div>
 
-                <Button 
-                  onClick={handleGenerate} 
+                <Button
+                  onClick={handleGenerate}
                   disabled={isGenerating}
-                  className="w-full"
+                  className="w-full rounded-xl bg-black text-white shadow-lg hover:bg-gray-800"
                   size="lg"
+                  style={{
+                    boxShadow: '0 14px 14px -3.5px rgba(0, 0, 0, 0.08), 0 4.468px 4.468px -2.625px rgba(0, 0, 0, 0.14)'
+                  }}
                 >
                   {isGenerating ? (
                     <>
@@ -221,13 +228,13 @@ ${formData.senderName}`;
               </CardContent>
             </Card>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Generated Email</CardTitle>
-                <CardDescription>
-                  Your personalized cold email will appear here
-                </CardDescription>
-              </CardHeader>
+              <Card className="border-gray-300 shadow-lg" style={{ backgroundColor: '#FFFFFF', borderRadius: '16px' }}>
+                <CardHeader>
+                  <CardTitle className="font-serif" style={{ color: '#030303' }}>Generated Email</CardTitle>
+                  <CardDescription style={{ color: '#6C6E74' }}>
+                    Your personalized cold email will appear here
+                  </CardDescription>
+                </CardHeader>
               <CardContent>
                 {generatedEmail ? (
                   <div className="space-y-4">
@@ -257,8 +264,14 @@ ${formData.senderName}`;
                 )}
               </CardContent>
             </Card>
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* Background overlay for depth */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute bottom-0 left-1/2 h-64 w-full max-w-6xl -translate-x-1/2 rounded-full bg-gradient-to-r from-yellow-400/10 via-orange-400/10 to-purple-400/10 blur-3xl"></div>
       </div>
     </section>
   );

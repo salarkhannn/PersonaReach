@@ -1,66 +1,67 @@
+'use client';
 import Link from "next/link";
 import { Linkedin, Twitter, Mail } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-background border-t border-border">
-      <div className="container py-12">
-        <div className="grid gap-8 md:grid-cols-4">
-          <div className="md:col-span-2">
-            <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent font-bold text-2xl">
-                PersonaReach.ai
+    <footer className="relative overflow-hidden" style={{ backgroundColor: '#FAF9F7' }}>
+      {/* Main Content Container */}
+      <div className="relative mx-auto max-w-7xl border-t border-dashed border-black/16" style={{ backgroundColor: '#FFFDFA' }}>
+        <div className="px-6 py-12">
+          <div className="grid gap-8 md:grid-cols-4">
+            <div className="md:col-span-2">
+              <Link href="/" className="flex items-center space-x-2 mb-4">
+                <div className="font-serif font-bold text-2xl" style={{ color: '#030303' }}>
+                  PersonaReach.ai
+                </div>
+              </Link>
+              <p className="mb-4 max-w-md" style={{ color: '#6C6E74' }}>
+                Transform your cold outreach with AI-powered personalized emails that get responses. 
+                Turn LinkedIn profiles into compelling conversations.
+              </p>
+              <div className="flex space-x-4">
+                <a href="#" className="transition-colors" style={{ color: '#6C6E74' }} onMouseEnter={(e) => e.currentTarget.style.color = '#030303'} onMouseLeave={(e) => e.currentTarget.style.color = '#6C6E74'}>
+                  <Twitter className="h-5 w-5" />
+                </a>
+                <a href="#" className="transition-colors" style={{ color: '#6C6E74' }} onMouseEnter={(e) => e.currentTarget.style.color = '#030303'} onMouseLeave={(e) => e.currentTarget.style.color = '#6C6E74'}>
+                  <Linkedin className="h-5 w-5" />
+                </a>
+                <a href="#" className="transition-colors" style={{ color: '#6C6E74' }} onMouseEnter={(e) => e.currentTarget.style.color = '#030303'} onMouseLeave={(e) => e.currentTarget.style.color = '#6C6E74'}>
+                  <Mail className="h-5 w-5" />
+                </a>
               </div>
-            </Link>
-            <p className="text-muted-foreground mb-4 max-w-md">
-              Transform your cold outreach with AI-powered personalized emails that get responses. 
-              Turn LinkedIn profiles into compelling conversations.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Mail className="h-5 w-5" />
-              </a>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4 font-serif" style={{ color: '#030303' }}>Product</h3>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="/pricing" className="transition-colors" style={{ color: '#6C6E74' }} onMouseEnter={(e) => e.currentTarget.style.color = '#030303'} onMouseLeave={(e) => e.currentTarget.style.color = '#6C6E74'}>Pricing</Link></li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-4 font-serif" style={{ color: '#030303' }}>Support</h3>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#" className="transition-colors" style={{ color: '#6C6E74' }} onMouseEnter={(e) => e.currentTarget.style.color = '#030303'} onMouseLeave={(e) => e.currentTarget.style.color = '#6C6E74'}>Documentation</a></li>
+                <li><Link href="/contact" className="transition-colors" style={{ color: '#6C6E74' }} onMouseEnter={(e) => e.currentTarget.style.color = '#030303'} onMouseLeave={(e) => e.currentTarget.style.color = '#6C6E74'}>Contact</Link></li>
+                <li><a href="#" className="transition-colors" style={{ color: '#6C6E74' }} onMouseEnter={(e) => e.currentTarget.style.color = '#030303'} onMouseLeave={(e) => e.currentTarget.style.color = '#6C6E74'}>Help Center</a></li>
+                <li><a href="#" className="transition-colors" style={{ color: '#6C6E74' }} onMouseEnter={(e) => e.currentTarget.style.color = '#030303'} onMouseLeave={(e) => e.currentTarget.style.color = '#6C6E74'}>Status</a></li>
+              </ul>
             </div>
           </div>
 
-          <div>
-            <h3 className="font-semibold mb-4">Product</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="/" className="hover:text-primary transition-colors">Features</Link></li>
-              <li><Link href="/pricing" className="hover:text-primary transition-colors">Pricing</Link></li>
-              <li><a href="#" className="hover:text-primary transition-colors">API</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Integrations</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-4">Support</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Documentation</a></li>
-              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Help Center</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Status</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="border-t border-border mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground">
-            © 2024 PersonaReach.ai. All rights reserved.
-          </p>
-          <div className="flex space-x-6 mt-4 sm:mt-0">
-            <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Terms of Service
-            </a>
+          <div className="border-t border-dashed border-black/16 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center">
+            <p className="text-sm" style={{ color: '#6C6E74' }}>
+              © 2025 PersonaReach.ai. All rights reserved.
+            </p>
+            <div className="flex space-x-6 mt-4 sm:mt-0">
+              <a href="#" className="text-sm transition-colors" style={{ color: '#6C6E74' }} onMouseEnter={(e) => e.currentTarget.style.color = '#030303'} onMouseLeave={(e) => e.currentTarget.style.color = '#6C6E74'}>
+                Privacy Policy
+              </a>
+              <a href="#" className="text-sm transition-colors" style={{ color: '#6C6E74' }} onMouseEnter={(e) => e.currentTarget.style.color = '#030303'} onMouseLeave={(e) => e.currentTarget.style.color = '#6C6E74'}>
+                Terms of Service
+              </a>
+            </div>
           </div>
         </div>
       </div>
